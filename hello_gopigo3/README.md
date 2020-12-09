@@ -99,7 +99,9 @@ También podemos abrir carpetas en nuestra RPi desde VSC y poder editar así sus
 
 ### "¡Está vivooo! ¡Vivoooooo!"
 
-![](https://media.giphy.com/media/tze1mGedykiuk/giphy.gif)
+<p align="center">
+    <img src="https://media.giphy.com/media/tze1mGedykiuk/giphy.gif">
+</p>
 
 Ahora emularemos al <a href="https://es.wikipedia.org/wiki/V%C3%ADctor_Frankenstein">Dr. Víctor Frankenstein</a> y daremos vida a nuestro robot haciendo que se mueva. Como Adam, que es como se llamaba realmente la criatura creada por el Dr. Frankenstein (os dejo ese detalle ahí para cuando vayáis a Pasapalabra 🧟‍♂️), nuestro robot necesita alimentación para funcionar. Así que lo primero que haremos será conectar nuestro pack de pilas al conector jack que hay en la placa de circuito impreso (PCB) roja. De este modo, estaremos alimentando los motores con los 12 V que necesitan. El transformador de la RPi solo da 5 V. Se pueden dejar conectados ambos y es lo más recomendable mientras que está operando con la RPi sin que el robot deba moverse. Así, la RPi se alimenta del transformador y de alarga la carga de las baterías. Cuando tengamos que hacer que el robot se mueva, desconectamos el conector microUSB de la RPi y, al acabar la prueba y volver a coger nuestro robot para programar, volvemos a conectar el microUSB. Fácil.
 
