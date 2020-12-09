@@ -35,7 +35,7 @@ En esta sesión vamos a aprender las operaciones básicas para interactuar con e
 
 Cuando hablamos del PC, hablamos de tu ordenador de sobremesa o portátil. En él tenemos instalada una máquina virtual (VM) con Ubuntu 18.04 LTS (Bionic), a no ser que tengas directamente un PC con este Sistema Operativo (SO). En la VM, también tenemos instalado ROS Melodic; la versión *desktop-full*. Este es nuestro punto de partida. Si esto no lo tienes, ¡no se qué haces aquí leyendo que no lo estás instalando todo! 😭
 
-Partiendo de esta base, vamos a instalar [Visual Studio Code]([Visual Studio Code - Code Editing. Redefined](https://code.visualstudio.com/)) (VSC) para poder programar remotamente nuestra RPis de una manera mucho más sencilla. Para ello, ejecutamos el siguiente comando en el terminal:
+Partiendo de esta base, vamos a instalar [Visual Studio Code](https://code.visualstudio.com/) (VSC) para poder programar remotamente nuestra RPis de una manera mucho más sencilla. Para ello, ejecutamos el siguiente comando en el terminal:
 
 ```bash
 sudo snap install --classic code
