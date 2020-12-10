@@ -2,16 +2,19 @@
 
 <blockquote><a rel="cc:attributionURL" property="dct:title" href="https://github.com/Albert-Alvarez/ros-con-gopigo3">Hello, GoPiGO3</a> por <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://thealbert.dev/">Albert Álvarez Carulla</a> se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/deed.es">Licencia Creative Commons Atribución-SinDerivadas 4.0 Internacional (CC BY-ND 4.0)</a>.<br /><img alt="Licencia Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-nd/4.0/88x31.png" /></a></blockquote>
 
+<!--
 En esta sesión vamos a aprender las operaciones básicas para interactuar con el robot y poder hacer con él las operaciones básicas. Básicamente, nos dedicaremos a ver cómo conectarnos a la Raspberry Pi (RPi) para poder programar nuestros nodos en *Robot Operating System* (ROS), instalar *packages*, ejecutar los nodos; cómo hacer que el robot se mu
-
+-->
 ## Contenidos
 
-- [Introducción](#hello-gopigo3)
+<!-- - [Introducción](#hello-gopigo3) -->
 - [Objetivos](#objetivos)
 - [Procedimiento](#procedimiento)
+<!--
 - [Reto](#reto)
 - [Evaluación](#evaluación)
 - [Conclusiones](#conclusiones)
+-->
 
 ## Objetivos
 
@@ -731,7 +734,7 @@ sudo shutdown now
 ```
 
 Con esto apagamos la RPi. Cuando el LED amarillo de la RPi deje de parpadear, podemos quitar todas las alimentaciones sin miedo.
-
+<!--
 ## Reto
 
 En esta sesión no hay más reto que hacer el esfuerzo de entender todo lo que se ha hecho. Es una primera sesión muy cañera porque vamos desde ver cosas tan básicas como crear una carpeta o cambiar de directorio, hasta como visualizar en remoto datos obtenidos por el robot mediante ROS. Así que ese es el reto.
@@ -739,3 +742,4 @@ En esta sesión no hay más reto que hacer el esfuerzo de entender todo lo que s
 ## Evaluación
 
 ## Conclusiones
+-->
