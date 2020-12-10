@@ -33,7 +33,7 @@ En esta sesión vamos a aprender las operaciones básicas para interactuar con e
 
 ### Configuración del PC
 
-Cuando hablamos del PC, hablamos de tu ordenador de sobremesa o portátil. En él tenemos instalada una máquina virtual (VM) con Ubuntu 18.04 LTS (Bionic), a no ser que tengas directamente un PC con este Sistema Operativo (SO). En la VM, también tenemos instalado ROS Melodic; la versión *desktop-full*. Este es nuestro punto de partida. Si esto no lo tienes, ¡no se qué haces aquí leyendo que no lo estás instalando todo! 😭
+Cuando hablamos del PC, hablamos de tu ordenador de sobremesa o portátil. En él tenemos instalada una máquina virtual (VM) con Ubuntu 18.04 LTS (Bionic), a no ser que tengas directamente un PC con este Sistema Operativo (OS). En la VM, también tenemos instalado ROS Melodic; la versión *desktop-full*. Este es nuestro punto de partida. Si esto no lo tienes, ¡no se qué haces aquí leyendo que no lo estás instalando todo! 😭
 
 Partiendo de esta base, vamos a instalar [Visual Studio Code](https://code.visualstudio.com/) (VSC) para poder programar remotamente nuestra RPis de una manera mucho más sencilla. Para ello, ejecutamos el siguiente comando en el terminal:
 
@@ -45,7 +45,7 @@ Una vez finalizada la instalación, tendremos la aplicación disponible desde el
 
 > **Es altamente recomendable que os acostumbréis a moveros por el terminal** más que por el entorno gráfico. Habrá situaciones en las que no dispondréis de entornos gráficos (servidores, sistemas embebidos, ...) y solo podréis tirar de terminal. Además, es mucho más rápido moverte con ella a través del sistema de ficheros y muchas operaciones solo se pueden realizar desde allí. Al principio puede parecer complicado (intimidante, más bien), pero en dos días veréis que solo se necesitan un par de comandos para hacer las operaciones del día a día y en un futuro os acordaréis de mí y diréis "que razón tenía el profe ese... ¿cómo se llamaba?" 😭 Pues eso.
 
-Finalmente, en VSC, instalamos un módulo que nos permitirá conectarnos y trabajar remotamente en la RPi. Este módulo se llama [*Remote Development*](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack). Para instalarlo, abrimos VSC y, la barra lateral izquierda, nos vamos a la extensiones (o con el atajo <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>X</kbd>). En la barra de búsqueda, ponemos "remote development" y, normalmente, suele ser el primer resultado. Al clicar en él, se visualizará en la pagina principal de VSC la página de la extensión. Clicamos `Install` y *c'est fini*. Ya lo tenemos todo preparado. Falta configurar la conexión remota, pero eso lo haremos cuando nos vayamos a conectar.
+Finalmente, en VSC, instalamos un módulo que nos permitirá conectarnos y trabajar remotamente en la RPi. Este módulo se llama [*Remote Development*](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack). Para instalarlo, abrimos VSC y, en la barra lateral izquierda, nos vamos a las extensiones (o con el atajo <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>X</kbd>). En la barra de búsqueda, ponemos "remote development" y, normalmente, suele ser el primer resultado. Al clicar en él, se visualizará en la página principal de VSC la página de la extensión. Clicamos `Install` y *c'est fini*. Ya lo tenemos todo preparado. Falta configurar la conexión remota, pero eso lo haremos cuando nos vayamos a conectar.
 
 <p align="center">
     <a href="../assets/imgs/vsc-remote-development.png">
@@ -55,9 +55,9 @@ Finalmente, en VSC, instalamos un módulo que nos permitirá conectarnos y traba
 
 ### Encendiendo máquinas
 
-¡Vamos a encender el robot! Eso sí, primeramente nos aseguramos que tengamos todo disponible: RPi, motores, LIDAR, cámara, tarjeta microSD, ... La lista completa está disponible en el [`README` principal](../README.md). Con todo disponible y debidamente conectado, vamos a alimentar la RPi a través de su puerto microUSB utilizando el transformador pertinente. La RPi iniciará su SO y en unos 15~20 segundos se conectará a alguna de las redes WiFi que tiene configuradas por defecto. Algo muy importante es la dirección IP que le da el *router* a la RPi, puesto que la necesitamos para poder conectarnos a ella. Preguntadle a vuestro profesor a qué red WiFi os tenéis que conectar (¡tiene que ser la misma que a la que se haya conectado vuestra RPi!) y qué IP tiene vuestra RPi (entrará en el *router* y os lo dirá).
+¡Vamos a encender el robot! Eso sí, primeramente nos aseguramos que tengamos todo disponible: RPi, motores, LIDAR, cámara, tarjeta microSD, ... La lista completa está disponible en el [`README` principal](../README.md). Con todo disponible y debidamente conectado, vamos a alimentar la RPi a través de su puerto microUSB utilizando el transformador pertinente. La RPi iniciará su OS y en unos 15~20 segundos se conectará a alguna de las redes WiFi que tiene configuradas por defecto. Algo muy importante es la dirección IP que le da el *router* a la RPi, puesto que la necesitamos para poder conectarnos a ella. Preguntadle a vuestro profesor a qué red WiFi os tenéis que conectar (¡tiene que ser la misma que a la que se haya conectado vuestra RPi!) y qué IP tiene vuestra RPi (entrará en el *router* y os lo dirá).
 
-Ahora vamos a conectarnos a la RPi desde nuestra VM. Nos vamos a VSC y hacemos clic al icono situado en la esquina inferior-izquierda ![](../assets/imgs/icono-remote.png) En la parte de arriba de la aplicación, se nos abrirá un desplegable. Allí seleccionamo `Remote-SSH: Connect to Host...`. Hecho esto sale una lista con todos los sistemas remotos que tenemos configurados. Obvio. No hemos configurado todavía ninguno y por eso está la lista vacía (cuando tengamos configurado nuestro sistema remoto, solamente deberemos de seleccionarlo en la lista; lo veremos en la siguiente sesión cuando nos tengamos que volver a conectar a la RPi). Clicamos a `+ Add New SSH Host...`.  Seguidamente, nos pide ingresar la instrucción de conexión. Es esta:
+Ahora vamos a conectarnos a la RPi desde nuestra VM. Nos vamos a VSC y hacemos clic al icono situado en la esquina inferior-izquierda ![](../assets/imgs/icono-remote.png) En la parte superior de la aplicación, se nos abrirá un desplegable. Allí seleccionamos `Remote-SSH: Connect to Host...`. Hecho esto sale una lista con todos los sistemas remotos que tenemos configurados. Obvio. No hemos configurado todavía ninguno y por eso está la lista vacía (cuando tengamos configurado nuestro sistema remoto, solamente deberemos de seleccionarlo en la lista; lo veremos en la siguiente sesión cuando nos tengamos que volver a conectar a la RPi). Clicamos a `+ Add New SSH Host...`.  Seguidamente, nos pide ingresar la instrucción de conexión. Es esta:
 
 ```bash
 ssh pi@XXX.XXX.XXX.XXX
@@ -77,9 +77,9 @@ Al hacer esto último, nos aparece un mensaje en la parte superior del tipo
 "XXX.XXX.XXX.XXX" has fingerprint "SHA256:xxxxxxxxxxxxxxxxxx..."
 ```
 
-y nos pregunta que si queremos continuar. ¿Queremos continuar? Pues eso, le decimos que `Continue`. Este mensaje solo aparece la primera vez que nos conectamos a un sistema remoto. Por último, ahora ya sí, nos pide la contraseña del usuario de la RPi que es `raspberry`. La ingresamos y pulsamos <kbd>ENTER</kbd>. Se nos abrirá una nueva ventana de VSC que estará trabajando sobre el sistema remoto (podéis/recomiendo cerrar la otra ventana de VSC para ahorrara espacio en el Escritorio). Si es la primera vez que nos conectamos, la aplicación tardará unos segundos en conectarse puesto que está instalando en la RPi las herramientas necesarias para llevar a cabo la comunicación remota. Sabemos que nos hemos conectado correctamente cuando en la esquina inferior-izquierda aparece la IP de nuestro sistema remoto ![](../assets/imgs/icono-remote-connected.png) (en mi caso, `192.168.1.242` en el momento de escribir estas líneas).
+y nos pregunta que si queremos continuar. ¿Queremos continuar? Pues eso, le decimos que `Continue`. Este mensaje solo aparece la primera vez que nos conectamos a un sistema remoto. Por último, ahora ya sí, nos pide la contraseña del usuario de la RPi que es `raspberry`. La ingresamos y pulsamos <kbd>ENTER</kbd>. Se nos abrirá una nueva ventana de VSC que estará trabajando sobre el sistema remoto (podéis/recomiendo cerrar la otra ventana de VSC para ahorrar espacio en el Escritorio). Si es la primera vez que nos conectamos, la aplicación tardará unos segundos en conectarse puesto que está instalando en la RPi las herramientas necesarias para llevar a cabo la comunicación remota. Sabemos que nos hemos conectado correctamente cuando en la esquina inferior-izquierda aparece la IP de nuestro sistema remoto ![](../assets/imgs/icono-remote-connected.png) (en mi caso, `192.168.1.242` en el momento de escribir estas líneas).
 
-> Hasta ahora habéis seguido la chuleta de cómo conectarse remotamente a la RPi. No os he explicado que es SSH. Eso queda como trabajo fuera del aula y os lo pediré al final del guion a modo de entregable 😈
+> Hasta ahora habéis seguido la chuleta de cómo conectarse remotamente a la RPi. No os he explicado que es SSH. Eso queda como trabajo fuera del aula y os lo preguntaré en personal la siguiente sesión de prácticas 😈
 
 Ahora si abrimos un terminal dentro de VSC, ya sea yendo a `View > Terminal` o mediante el atajo <kbd>CTRL</kbd>+<kbd>`` ` ``</kbd>, vemos que estamos dentro de la RPi; y lo sabemos por el *prompt* del terminal que nos indica el usuario `pi` y el *hostname* del sistema remoto `raspberry`.
 
@@ -89,7 +89,7 @@ Ahora si abrimos un terminal dentro de VSC, ya sea yendo a `View > Terminal` o m
     </a>
 </p>
 
-También podemos abrir carpetas en nuestra RPi desde VSC y poder editar así sus contenidos. Para no tener que ir abriendo y cerrando carpetas (que casua que se abra y cierre la ventana de VSC), abriremos directamente nuestra carpeta de usuario y así tendremos acceso a todos nuestros ficheros. Nuestra carpeta de usuario es `/home/pi/`. Para abrirla, vamos al explorador de archivos de la barra lateral izquierda (<kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>E</kbd>) y clicamos en `Open Folder`. Se nos abrirá un desplegable con nuestra carpeta de usuario puesta por defecto. Si no lo está, la ponemos. Finalmente, le damos a `Ok`. Si todo ha ido como tenía que ir (básicamente, que no nos hemos saltado ningún paso), deberíamos tener nuestro VSC abierto, con los archivos de nuestra RPi a la izquierda y un terminal dentro de la RPi en la parte de abajo. **¡Todo lo que es la configuración de VSC ya está hecha! Congrats!!** 🥳
+También podemos abrir carpetas en nuestra RPi desde VSC y poder editar así sus contenidos. Para no tener que ir abriendo y cerrando carpetas (que causa que se abra y cierre la ventana de VSC), abriremos directamente nuestra carpeta de usuario y así tendremos acceso a todos nuestros ficheros. Nuestra carpeta de usuario es `/home/pi/`. Para abrirla, vamos al explorador de archivos de la barra lateral izquierda (<kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>E</kbd>) y clicamos en `Open Folder`. Se nos abrirá un desplegable con nuestra carpeta de usuario puesta por defecto. Si no lo está, la ponemos. Finalmente, le damos a `Ok`. Si todo ha ido como tenía que ir (básicamente, que no nos hemos saltado ningún paso), deberíamos tener nuestro VSC abierto, con los archivos de nuestra RPi a la izquierda y un terminal dentro de la RPi en la parte de abajo. **¡Todo lo que es la configuración de VSC ya está hecha! *Congrats!!*** 🥳
 
 <p align="center">
     <a href="../assets/imgs/vsc-final.png">
@@ -103,15 +103,15 @@ También podemos abrir carpetas en nuestra RPi desde VSC y poder editar así sus
     <img src="https://media.giphy.com/media/tze1mGedykiuk/giphy.gif">
 </p>
 
-Ahora emularemos al <a href="https://es.wikipedia.org/wiki/V%C3%ADctor_Frankenstein">Dr. Víctor Frankenstein</a> y daremos vida a nuestro robot haciendo que se mueva. Como Adam, que es como se llamaba realmente la criatura creada por el Dr. Frankenstein (os dejo ese detalle ahí para cuando vayáis a Pasapalabra 🧟‍♂️), nuestro robot necesita alimentación para funcionar. Así que lo primero que haremos será conectar nuestro pack de pilas al conector jack que hay en la placa de circuito impreso (PCB) roja. De este modo, estaremos alimentando los motores con los 12 V que necesitan. El transformador de la RPi solo da 5 V. Se pueden dejar conectados ambos y es lo más recomendable mientras que está operando con la RPi sin que el robot deba moverse. Así, la RPi se alimenta del transformador y de alarga la carga de las baterías. Cuando tengamos que hacer que el robot se mueva, desconectamos el conector microUSB de la RPi y, al acabar la prueba y volver a coger nuestro robot para programar, volvemos a conectar el microUSB. Fácil.
+Ahora emularemos al <a href="https://es.wikipedia.org/wiki/V%C3%ADctor_Frankenstein">Dr. Víctor Frankenstein</a> y daremos vida a nuestro robot haciendo que se mueva. Como Adam, que es como se llamaba realmente la criatura creada por el Dr. Frankenstein (os dejo ese detalle ahí para cuando vayáis a Pasapalabra 🧟‍♂️ (me debéis un porcentaje del bote)), nuestro robot necesita alimentación para funcionar. Así que lo primero que haremos será conectar nuestro pack de pilas al conector jack que hay en la placa de circuito impreso (PCB) roja. De este modo, estaremos alimentando los motores con los 12 V que necesitan. El transformador de la RPi solo da 5 V. Se pueden dejar conectados ambos y es lo más recomendable mientras que está operando con la RPi sin que el robot deba moverse. Así, la RPi se alimenta del transformador y se alarga la carga de las baterías. Cuando tengamos que hacer que el robot se mueva, desconectamos el conector microUSB de la RPi y, al acabar la prueba y volver a coger nuestro robot para programar, volvemos a conectar el microUSB. Fácil.
 
-> **IMPORTANTE:** Aseguraros que siempre esté conectado o bien el pack de baterías o bien la alimentación a través del microUSB, si no, cortaréis la alimentación de la RPi. Esto último, un corte a lo bestia de la alimentación de la RPi sin apagarla debidamente, puede ocasionar que el robot deje de funcionar. ¿Con que probabilidad? Con la misma de que un *pendrive* os deje de funcionar si no hacéis un "Explusar el dispositivo con seguridad". ¿Os arriesgaréis?
+> **IMPORTANTE:** Aseguraros que siempre esté conectado o bien el pack de baterías o bien la alimentación a través del microUSB, si no, cortaréis la alimentación de la RPi. Esto último, un corte a lo bestia de la alimentación de la RPi sin apagarla debidamente, puede ocasionar que el robot deje de funcionar. ¿Con qué probabilidad? Con la misma de que un *pendrive* os deje de funcionar si no hacéis un "Explusar el dispositivo con seguridad". ¿Os arriesgaréis?
 
 Una vez enchufado, sabréis que todo esta correcto cuando el LED de la PCB roja está en color verde.
 
 #### Organización del espacio de trabajo
 
-Entramos en un tema personal, pero que os obligaré a seguir con mano de hierro. La palabra mágica es "OR-GA-NI-ZA-CIÓN". Si yo entro a un ordenador y quiero buscar las fotos de un prototipo, ¿iré a buscarlas a la carpeta "Imágenes" o en la carpeta "test-borrar"? O si quiero buscar un esquemático de una PCB, ¿iré a buscarla a la carpeta "Proyectos/PCB" o a la carpeta "Escritorio/Ordenar_2014_12_06/placa1"? Como en los ejemplos anteriores, cada uno puede guardar las cosas donde quiera y "no hay problema", pero es recomendable que utilicéis un sistema de organización que os permita tener vuestro espacio de trabajo ordenado. En este caso, aplicar este criterio de organización hará que puede puede encontrar vuestro archivos más fácilmente (no se puede evaluar lo que no se puede encontrar... [![](../assets/imgs/if-u-know-what-i-mean-inline.jpg)](../assets/imgs/if-u-know-what-i-mean.jpg)). Por ello, a modo Emperador Palpatine, utilizaremos mi criterio para organizarnos. Simplemente, crearemos la siguiente estructura de directorios en vuestro carpeta `home`. 
+Entramos en un tema personal, pero que os obligaré a seguir con mano de hierro. La palabra mágica es "OR-GA-NI-ZA-CIÓN". Si yo entro a un ordenador y quiero buscar las fotos de un prototipo, ¿iré a buscarlas a la carpeta "Imágenes" o en la carpeta "test-borrar"? O si quiero buscar un esquemático de una PCB, ¿iré a buscarla a la carpeta "Proyectos/PCB" o a la carpeta "Escritorio/Ordenar_2014_12_06/placa1"? Como en los ejemplos anteriores, cada uno puede guardar las cosas donde quiera y "no hay problema", pero es recomendable que utilicéis un sistema de organización que os permita tener vuestro espacio de trabajo ordenado. En este caso, aplicar este criterio de organización hará que pueda encontrar vuestro archivos más fácilmente (no se puede evaluar lo que no se puede encontrar... [![](../assets/imgs/if-u-know-what-i-mean-inline.jpg)](../assets/imgs/if-u-know-what-i-mean.jpg)). Por ello, a modo [Emperador Palpatine](https://starwars.fandom.com/es/wiki/Darth_Sidious), utilizaremos mi criterio para organizarnos. Simplemente, crearemos la siguiente estructura de directorios en vuestra carpeta `home`. 
 
 ```
 /home/pi
@@ -139,23 +139,23 @@ Básicamente, tendremos una carpeta llama `workspace` en vuestro `home` donde de
     └── www
 ```
 
-Y en cada carpeta tengo los diferentes tipos de proyecto. ¿Quiere decir que esta es la mejor forma de organizarse? Rotundamente, no. Pero es una forma y lo importante es que sigamos todos una forma en común. En nuestro caso, además, solo tendremos dos tipos de proyectos; del tipo ROS y python. Por ello, solo tenemos dos carpetas debajo del `workspace` llamadas `python` y `ros`. Allí crearemos nuestro proyectos ROS o, como se suelen llamar, *workspaces* de ROS.
+Y en cada carpeta tengo los diferentes tipos de proyecto. ¿Quiere decir que esta es la mejor forma de organizarse? Rotundamente, no. Pero es una forma y lo importante es que sigamos todos una forma en común. En nuestro caso, además, solo tendremos dos tipos de proyectos: del tipo ROS y python. Por ello, solo tenemos dos carpetas debajo del `workspace` llamadas `python` y `ros`. Allí crearemos nuestros **proyectos ROS** o, como **se suelen llamar, *workspaces*** de ROS.
 
 Esta misma organización debe de seguirse tanto en RPi como en vuestra VM.
 
-"Vale, vale, seré organizado y tal. ¿Cómo creo que las carpetas?". Pues lo haremos con el terminal. Nos vamos al terminal de VSC (terminal que está corriendo dentro de la RPi) y utilizamos el comando `mk` para crear una carpeta (`mkdir` = *make directory* ). El comando es
+"Vale, vale, seré organizado y tal. ¿Cómo creo las carpetas?". Pues lo haremos con el terminal. Nos vamos al terminal de VSC (terminal que está corriendo dentro de la RPi) y utilizamos el comando `mkdir` para crear una carpeta (`mkdir` = *make directory* ). El comando es
 
 ```bash
 mkdir ~/workspace
 ```
 
-La tilde `~` es un carácter especial que al ejecutarse el comando es sutituido por el *path* de vuestro `home` (que es `/home/pi/`). De este modo, el comando se ejecuta como 
+La tilde `~` es un carácter especial que, al ejecutarse el comando, es sutituido por el *path* de vuestro `home` (que es `/home/pi/`). De este modo, el comando se ejecuta como 
 
 ```bash
 mkdir /home/pi/workspace
 ```
 
-Este carácter lo veréis por doquier. Si no ponemos la tile o ningún *path* delante del nombre de la carpeta que queremos crear, la carpeta se creará en la carpeta en la que se encuentre en ese momento el termina. Podemos saber en qué carpeta estamos con el comando `pwd`.
+Este carácter lo veréis por doquier. Si no ponemos la tile o ningún *path* delante del nombre de la carpeta que queremos crear, la carpeta se creará en la carpeta en la que se encuentre en ese momento el terminal. Podemos saber en qué carpeta estamos con el comando `pwd`.
 
 <p align="center">
     <a href="../assets/imgs/pwd.png">
@@ -181,13 +181,13 @@ Si ahora ejecutamos el comando `pwd`, vemos que estamos en la carpeta `/home/pi/
 
 Perfecto. Os dejo para vosotros crear dentro de la carpeta `workspace` una carpeta llamada `ros` y otra llamada `python` (¡respetad las mayúsculas y minúsculas durante todas las sesiones!). Finalmente, entrad en la carpeta `python`.
 
-> Con el comando `cd` para lo mismo que con `mkdir`. Si no ponéis un [*path* entero o absoluto](https://es.wikipedia.org/wiki/Ruta_(inform%C3%A1tica)#Ruta_absoluta) (que es como se dice correctamente), el comando intentará entrar a una carpeta que se llame como lo habéis indicado y que esté dentro de la carpeta en la que os encontráis. Este tipo de *path* se les conoce como [*path* relativo](https://es.wikipedia.org/wiki/Ruta_(inform%C3%A1tica)#Ruta_relativa).
+> Con el comando `cd` pasa lo mismo que con `mkdir`. Si no ponéis un [*path* entero o absoluto](https://es.wikipedia.org/wiki/Ruta_(inform%C3%A1tica)#Ruta_absoluta) (que es como se dice correctamente), el comando intentará entrar a una carpeta que se llame como le habéis indicado y que esté dentro de la carpeta en la que os encontráis. Este tipo de *path* se les conoce como [*path* relativo](https://es.wikipedia.org/wiki/Ruta_(inform%C3%A1tica)#Ruta_relativa).
 
 #### Mover el robot con python
 
 Empecemos todos desde el mismo lugar. Dentro de la RPi (terminal VSC), estamos en la carpeta `~/workspace/python/`. Allí crearemos una carpeta para un proyecto llamado `move_motors`. Después entramos en esa carpeta.
 
-Como veis, es recomendable no poner a los archivos ni a las carpetas ni espacios en blanco ni caracteres no ingleses como "Ñ" , "Ç" o acentos. A muchos programas no les gusta como seguramente habéis podido comprobar todos aquellos que guardáis las cosas del grado en una carpeta llamada `Grau d'Enginyeria Biomèdica`.
+Como veis, es recomendable no poner a los archivos/carpetas espacios en blanco ni caracteres no ingleses como "Ñ" , "Ç" o acentos. A muchos programas no les gusta, como seguramente habéis podido comprobar todos aquellos que guardáis las cosas del grado en una carpeta llamada `Grau d'Enginyeria Biomèdica`.
 
 Ahora vamos crear en esa carpeta un archivo con el mismo nombre y con extensión `.py`. Es decir, un archivo python. Esto lo hacemos desde el explorador de archivos de VSC, no del terminal.
 
@@ -201,7 +201,7 @@ Ahora vamos crear en esa carpeta un archivo con el mismo nombre y con extensión
 
 Hacemos clic derecho a la carpeta `workspace/python/move_motors/` y clicamos en `New File`.  Ponemos como nombre `move_motors.py` y automáticamente se nos abrirá un archivo en blanco donde programaremos. También os aparecerá la primera vez una ventana *pop-up* recomendándoos que instaléis un módulo de python. Decidle que sí, así os hará un *highlight* de la sintaxis de python (colores) y será más fácil programar.
 
-¡Muy bien! Vamos a ello. Haremos un pequeño programa para mover los motores hacia adelante 2 segundo y luego pare. El código es el siguiente y en el directamente os comento que hace cada cosa.
+¡Muy bien! Vamos a ello. Haremos un pequeño programa para mover los motores hacia adelante 2 segundos y luego pare. El código es el siguiente y en él directamente os comento qué hace cada cosa.
 
 > **IMPORTANTE:** Puede ser tentador copiar/pegar el código. No se puede comprobar (o sí... 😈) si lo habéis hecho o no, ni tampoco se puede obligar. Pero es altamente recomendable que siempre intentéis escribir todo aquello que programéis. Solo así entenderéis qué estáis haciendo. Ahora empezamos suave/fácil, pero más adelante la cosa se complicará y echaréis de menos no haberlo hecho así desde el principio. Es una recomendación para vuestro propio interés 😉
 
@@ -241,7 +241,7 @@ De normal, no sería necesario comentar tanto el código puesto que el nombre de
 
 > No os confundáis, debéis de comentar esas porciones de código que necesitan ser explicadas por ser más difíciles de comprender, pero si utilizáis nombres descriptivos para variables y funciones, esas porciones de código a explicar serán menos.
 
-Pues ahora tocaría ejecutar este programa. Primero, obvio, guardamos el archivo. Segundo, debemos de hacer que el archivo se pueda ejecutar. Por defecto, por razones de seguridad, Linux deshabilita la ejecución de los archivos. Vamos a ver cómo hacerlo.
+Pues ahora tocaría ejecutar este programa. Primero, obvio, guardamos el archivo. Segundo, debemos de hacer que el archivo se pueda ejecutar. Por defecto, por razones de seguridad, Linux deshabilita la ejecución de los archivos. Vamos a ver cómo habilitarlo.
 
 ##### Permisos en Linux
 
@@ -265,11 +265,11 @@ Ahora el comando nos sigue dando un listado de los archivos, pero además adjunt
 
 Cada fila del listado corresponde a un archivo. En total, hay ocho columnas separadas por un espacio o tabulación.
 
-- La primera columna es el primer guion que aparece en la fila. Ese guion indica que se trata de un archivo. Si fuera un directorio, habría una `d`. Y si fuera un enlace (lo más parecido, sin ser lo mismo, serian los accesos directos en Windows), habría una `l`.
-- La segunda columna son los 6 caracteres siguientes. Esos caracteres toman los valores de `-` (*none*), `r` (*read*), `w` (*write*) y `x` (*execute*). Esta columna muestra los permisos para el usuario y grupo propietarios del archivo/directorio y los permisos para el resto de usuario.
-  Los primeros tres caracteres indican los permisos del usuario propietario del archivo. Así pues, si el usuario propietario tiene permisos de solo escritura, los tres primeros caracteres serían `r--`. Si tuviese solo permisos de escritura, serían `-w-`. Si tuviera solo permisos de ejecución, sería `--x`. Los permisos también pueden ser combinados, de tal modo que el usuario propietario tuviera todos los permisos, sería `rwx`.
+- La primera columna es el primer guion que aparece en la fila. Ese guion indica que se trata de un archivo. Si fuera un directorio, habría una `d`. Y si fuera un enlace (lo más parecido, sin ser lo mismo, serían los accesos directos en Windows), habría una `l`.
+- La segunda columna son los 6 caracteres siguientes. Esos caracteres toman los valores de `-` (*none*), `r` (*read*), `w` (*write*) y `x` (*execute*). Esta columna muestra los permisos para el usuario y grupo propietarios del archivo/directorio y los permisos para el resto de usuarios.
+  Los primeros tres caracteres indican los permisos del usuario propietario del archivo. Así pues, si el usuario propietario tiene permisos de solo lectura, los tres primeros caracteres serían `r--`. Si tuviese solo permisos de escritura, serían `-w-`. Si tuviera solo permisos de ejecución, sería `--x`. Los permisos también pueden ser combinados, de tal modo que si el usuario propietario tuviera todos los permisos, sería `rwx`.
   Los tres siguientes caracteres siguen la misma lógica y se refieren a los permisos del grupo propietario del archivo/directorio. 
-  Los últimos tres caracteres son los permisos del resto de usuario.
+  Los últimos tres caracteres son los permisos del resto de usuarios.
   Tomando el ejemplo de la captura, los permisos del archivo `move_motors.py` son:
   - Usuario propietario: Lectura (Sí), Escritura (Sí), Ejecución (No).
   - Grupo propietario: Lectura (Sí), Escritura (No), Ejecución (No).
@@ -281,7 +281,7 @@ Cada fila del listado corresponde a un archivo. En total, hay ocho columnas sepa
 - La penúltima columna es la fecha de modificación del archivo.
 - Por último, aparece el nombre del archivo/directorio.
 
-Ahora que ya conocemos un poco la magia negra que hay detrás Linux, vamos a ver como darnos permisos para ejecutar el archivo `move_motors.py` puesto que hemos visto que no tenemos permisos de ejecución. Para ello utilizamos el comando `chmod` (`chmod` = *change mode*). Utilizaríamos el comando del siguiente modo
+Ahora que ya conocemos un poco la magia negra que hay detrás de Linux, vamos a ver cómo darnos permisos para ejecutar el archivo `move_motors.py` puesto que hemos visto que no tenemos permisos de ejecución. Para ello utilizamos el comando `chmod` (`chmod` = *change mode*). Utilizaríamos el comando del siguiente modo
 
 ```bash
 sudo chmod u=r+w+x move_motors.py
@@ -289,9 +289,9 @@ sudo chmod u=r+w+x move_motors.py
 
 Vamos a desengranar el comando. Primeramente, con `sudo` ejecutamos el comando con permisos de administrador. Suele ser común utilizar permisos de administrador para configurar los permisos. En este caso no nos haría falta puesto que somos el usuario propietario del archivo y tenemos permisos para modificarlo, pero ante la duda, usad `sudo` cuando cambiéis permisos.
 
-> No es una buena práctica lo que os acabo de decir, pero suele ser común acabando haciéndolo así. Lo que si que nunca debéis de hacer es dar permisos a todo el mundo porque sí. ¡Eso sí es una mala práctica que se castiga con cadena perpetua! 
+> No es una buena práctica lo que os acabo de decir, pero suele ser común acabar haciéndolo así. Lo que nunca debéis de hacer es dar permisos a todo el mundo porque sí. ¡Eso sí es una mala práctica que se castiga con cadena perpetua! 
 
-Luego utilizamos el comando `chmod` que acompañamos con los permisos que queremos configurar. En este caso, decimos que *user* propietario tanga permisos de lectura, escritura y ejecución. Es decir, `u=r+w+x` (`u` de *user*, para los despistados) . Si fuéramos a dar permisos al grupo, sería `g=r+w+x` (`g` = *group*). Y si fuéramos a dar permisos al resto de usuario, haríamos `o=r+w+x` (`o` = *others*). Existe otro modo para no explicitar los tres tipos de permisos. Sería con el comando
+Luego utilizamos el comando `chmod` que acompañamos con los permisos que queremos configurar. En este caso, decimos que el *user* propietario tenga permisos de lectura, escritura y ejecución. Es decir, `u=r+w+x` (`u` de *user*, para los despistados) . Si fuéramos a dar permisos al grupo, sería `g=r+w+x` (`g` = *group*). Y si fuéramos a dar permisos al resto de usuarios, haríamos `o=r+w+x` (`o` = *others*). Existe otro modo para no explicitar los tres tipos de permisos. Sería con el comando
 
 ```bash
 sudo chmod u+x move_motors.py
@@ -303,7 +303,7 @@ Con esto, ya tenemos permisos para ejecutar el archivo.
 
 ##### Ejecutar archivo python
 
-¿Podemos ejecutarlo ya? Sí, pero si lo hacemos el robot, que justamente tenemos al borde de la mesa, empezará a moverse y caerá al suelo. Eso supondría romper el robot y suspender la asignatura. ¡No queremos eso! Levantad el robot de tal manera que, cuando giren las ruedas, el robot no se mueva. Podéis poner un objeto debajo del robot para ello.
+¿Podemos ejecutarlo ya? Sí, pero si lo hacemos, el robot, que justamente lo tenemos al borde de la mesa, empezará a moverse y caerá al suelo. Eso supondría romper el robot y suspender la asignatura. ¡No queremos eso! Levantad el robot de tal manera que, cuando giren las ruedas, el robot no se mueva. Podéis poner un objeto debajo del robot para ello.
 
 ...
 
@@ -320,15 +320,15 @@ Una vez tengáis asegurado el robot, hacemos en el terminal de la RPi
 python move_motors.py
 ```
 
-Después de este comando, vuestro robot debe de haber movido sus ruedas hacia adelante durante 2 segundo hasta detenerlas. Si no ha sido el caso, revisa la alimentación del robot, el código de tu archivo python y sus permisos. Si aún así no te arranca, ¡nos avisas!
+Después de este comando, vuestro robot debe de haber movido sus ruedas hacia adelante durante 2 segundos hasta detenerlas. Si no ha sido el caso, revisa la alimentación del robot, el código de tu archivo python y sus permisos. Si aún así no te arranca, ¡nos avisas!
 
 ##### Otras instrucciones
 
-La librería EasyGoPiGo3 ofrece otra serie de métodos adicionales para mover el robot. Todos esos métodos los podéis encontrar [aquí](https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3). Más adelante necesitaréis de estos métodos para llevar a cabo el reto de esta sesión.
+La librería EasyGoPiGo3 ofrece otra serie de métodos adicionales para mover el robot. Todos esos métodos los podéis encontrar [aquí](https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3). Más adelante podéis necesitarlos.
 
 ### ROS en la RPi
 
-Parece que llevemos un buen rato (y así es), pero solo hemos hecho que se mueva el robot hacia adelante 2 segundos. *Not bad*, pero vamos a ir un poco más allá utilizando esta vez ROS. Vamos hacer exactamente el mismo ejercicio que antes, pero mediante un *package* de ROS que nosotros crearemos. El ejercicio en sí no tiene un objetivo práctico, sino más bien académico para ver cómo crear nuestro *package* en la RPi. Dicho esto, empecemos.
+Parece que llevemos un buen rato (y así es), pero solo hemos hecho que se mueva el robot hacia adelante 2 segundos. *Not bad*, pero vamos a ir un poco más allá utilizando esta vez ROS. Vamos a hacer exactamente el mismo ejercicio que antes, pero mediante un *package* de ROS que nosotros crearemos. El ejercicio en sí no tiene sentido práctico, sino más bien académico para ver cómo crear nuestro *package* en la RPi. Dicho esto, empecemos.
 
 #### Inicializar el *workspace* y el *package*
 
@@ -340,7 +340,7 @@ Dentro de la carpeta `hello_gopigo3`, creamos una carpeta llamada `src` y entram
 catkin_create_pkg hello_gopigo3
 ```
 
-Este comando nos crea un *package* dentro de la carpeta `src` con el nombre `hello_gopigo3`. También en este comando indicaríamos las dependencias de este nuevo *package*. Es decir, si nuestro nuevo *package* fuera a depender (por que lo usamos dentro) de un *package* llamado `std_msgs`, haríamos
+Este comando nos crea un *package* dentro de la carpeta `src` con el nombre `hello_gopigo3`. También en este comando indicaríamos las dependencias de este nuevo *package*. Es decir, si nuestro nuevo *package* fuera a depender (porque lo usamos dentro) de un *package* llamado `std_msgs`, haríamos
 
 ```bash
 catkin_create_pkg hello_gopigo3 stg_msgs
@@ -350,7 +350,7 @@ Pero este no es el caso de momento.
 
 > Si no os aparece/reconoce el comando `catkin_create_pkg` es porque o no habéis hecho el `source` de la instalación de ROS, o directamente no tenéis ROS instalado. Si este es el caso... Deberéis de instalarlo utilizando las instrucciones que se os facilitaron en sesiones anteriores 😅
 
-Entramos dentro de la carpeta `hello_gopigo3` que `catkin_create_pkg` nos ha creado dentro de la carpeta `src`. Allí, creamos una carpeta llamada `scripts`. Si trabajásemos con otros lenguajes de programación que requiriesen de un compilación previa (por ejemplo, C++), pondríamos nuestro código en una carpeta llamada `src` dentro del `package`. Pero como trabajamos con python, que no son más que scripts, creamos una carpeta para los programos en python llamada `scripts` y ahí los guardaremos. En esa nueva carpeta, creamos un archivo que se llame `move_motors.py` y que contenga el mismo programa que en el ejemplo anterior. 
+Entramos dentro de la carpeta `hello_gopigo3` que `catkin_create_pkg` nos ha creado dentro de la carpeta `src`. Allí, creamos una carpeta llamada `scripts`. Si trabajásemos con otros lenguajes de programación que requiriesen de un compilación previa (por ejemplo, C++), pondríamos nuestro código en una carpeta llamada `src` dentro del `package`. Pero como trabajamos con python, que no son más que scripts, creamos una carpeta para los programas en python llamada `scripts` y ahí los guardaremos. En esa nueva carpeta, creamos un archivo que se llame `move_motors.py` y que contenga el mismo programa que en el ejemplo anterior. 
 
 Solo una cosa adicional debemos de añadir en el código. En la primera línea, antes que nada, añadimos
 
@@ -398,7 +398,7 @@ Finalmente, solo queda compilar el *workspace* de ROS. Nos vamos al directorio r
 
 Compilamos con el comando `catkin_make`.
 
-**OBLIGATORIO:** Leeros los que sale en el terminal (el *output*) al ejecutar `catkin_make`. Os dará información de cómo ha ido la compilación del *workspace*, si han habido errores o no. ¡Preguntar por algún error que resulta que luego se indica en el *output*, acarrea la vuelta de las siete plagas del apocalipsis!
+**OBLIGATORIO:** Leeros lo que sale en el terminal (el *output*) al ejecutar `catkin_make`. Os dará información de cómo ha ido la compilación del *workspace*, si han habido errores o no. ¡Preguntar por algún error que resulta que luego se indica en el *output*, acarrea la vuelta de las siete plagas del apocalipsis!
 
 En principio, si se han seguido los pasos no debería de haber habido ningún problema y el *workspace* se ha compilado sin problemas. Fruto de la compilación, se nos han creado dos carpetas dentro de nuestro *workspace*: `build/` y `devel/`. Para que nuestro terminal sepa que existen nuevos *package* en el sistema (el que acabamos de crear), debemos de hacer un `source` del archivo `setup.sh` creado dentro de la carpeta `devel/`. Así pues, ejecutamos
 
@@ -424,13 +424,13 @@ rosrun hello_gopigo3 move_motors.py
 
 ### *Packages* de terceros
 
-En un momento dado (básicamente, este), puede ser interesante hacer correr *packages* de terceros. Vamos a ver cómo añadir *packages* de terceros, pero antes veremos como reconoce/opera ROS con los *packages*.
+En un momento dado (básicamente, este), puede ser interesante hacer correr *packages* de terceros. Vamos a ver cómo añadir *packages* de terceros, pero antes veremos cómo reconoce/opera ROS con los *packages*.
 
-ROS se puede instalar con una serie de *packages* por defecto. Normalmente, estos *packages* suelen ser muy utilizados y comunes por lo que es usual y recomendable instalarlos junto con ROS. Pero puede ser el caso que necesitemos otros *packages* que no tenemos instalados en nuestro sistema. Si ese el caso, tenemos dos opciones: 1) instalamos el *package* en nuestro sistema junto con ROS, o 2) añadimos ese *packages* como uno más en nuestro *workspace* y lo compilamos con el resto.
+ROS se puede instalar con una serie de *packages* por defecto. Normalmente, estos *packages* suelen ser muy utilizados y comunes por lo que es usual y recomendable instalarlos junto con ROS. Pero puede ser el caso que necesitemos otros *packages* que no tenemos instalados en nuestro sistema. Si ese el caso, tenemos dos opciones: 1) instalamos el *package* en nuestro sistema junto con ROS, o 2) añadimos ese *package* como uno más en nuestro *workspace* y lo compilamos con el resto.
 
-Esta última opción suele ser la más común cuando se va a utilizar un *package* de manera puntual o que se va a utilizar pocas veces. También suele ser una opción muy útil a la hora de compartir proyectos puesto que envías el *workspace* junto con los *packages* necesarios.
+Esta última opción suele ser la más común cuando se va a utilizar un *package* de manera puntual o pocas veces. También suele ser una opción muy útil a la hora de compartir proyectos puesto que envías el *workspace* junto con los *packages* necesarios.
 
-ROS buscará los *packages* utilizados primeramente en nuestro *workspace* y, si no lo encuentra, después en su instalación. Por ello, si utilizamos un *package* que está tanto en nuestro *workspace* como en la instalación de ROS, ROS cogerá el *package* en nuestro *workspace*. Vamos a ver como añadir los tres *packages* que utilizaremos en estas sesiones.
+ROS buscará los *packages* utilizados primeramente en nuestro *workspace* y, si no lo encuentra, después en su instalación. Por ello, si utilizamos un *package* que está tanto en nuestro *workspace* como en la instalación de ROS, ROS cogerá el *package* en nuestro *workspace*. Vamos a ver cómo añadir los tres *packages* que utilizaremos en estas sesiones.
 
 #### *Package* gopigo3
 
@@ -482,7 +482,14 @@ roslaunch gopigo3_node gopigo3.launch
       <img src="../assets/imgs/roslaunch-gopigo3.png">
     </a>
 </p>
-¡Veréis que el terminal empieza a llenarse de datos! Eso es el ángulo de orientación del robot en función de lo que hayan girado las ruedas. Por ello, si giráis **suavemente** una de la ruedas, veréis que ese valor va cambiando.
+
+¡Veréis que el terminal empieza a llenarse de datos! Eso es el ángulo de orientación del robot en función de lo que hayan girado las ruedas. En un segundo terminal, podéis ejecutar el comando
+
+```bash
+rostopic list
+```
+
+y veréis los topics en los que está publicando y está suscrito el nodo.
 
 <p align="center">
     <a href="../assets/imgs/rostopic-list.png">
@@ -518,7 +525,7 @@ Hacemos un `catkin_make` en la carpeta raíz de nuestro *workspace* y ejecutamos
 rosrun key_teleop key_teleop.py /key_vel:=/cmd_vel
 ```
 
-http://wiki.ros.org/Remapping%20Arguments
+Con `/key_vel:=/cmd_vel` lo que hacemos es [remapear los argumentos](http://wiki.ros.org/Remapping%20Arguments) del nodo para que publique en el *topic* `/cmd_vel` (que es al que está suscrito el nodo gopigo3) en lugar del *topic* original `/key_vel`.
 
 **Antes de tocar nada y teniendo las pilas conectadas**, desconectamos el cable microUSB de la RPi y dejamos el robot en el suelo. **Asegúrate que las pilas están bien cogidas. No serías el primero que se les escurre el paquete de pilas del velcro y se desconecta la alimentación (ni serías el primero en suspender 💢💢)**. Seguidamente, pulsamos la flecha <kbd>↑</kbd> de nuestro teclado y ... ¡se mueveee!
 
@@ -528,7 +535,7 @@ http://wiki.ros.org/Remapping%20Arguments
 </p>
 Juega un poco con las flechas para mover el robot. Te mereces este momento de descanso 😭
 
-Acabado el descanso, detén todos los procesos con <kbd>CTRL</kbd>+<kbd>C</kbd> y cierra todas las terminales hasta dejar solo una para trabajar.
+Acabado el descanso, detén todos los procesos con <kbd>CTRL</kbd>+<kbd>C</kbd> y cierra todos los terminales hasta dejar solo uno para trabajar.
 
 #### *Package* raspicam
 
@@ -597,13 +604,13 @@ Con el comando `chown` (`chown` = *change owner*) cambiamos tanto el usuario com
 roscd ydlidar/startup
 ```
 
-Este comando de ROS (`roscd`) nos lleva directamente al directorio del *package* indicado. En este directorio al que hemos ido, hay un script que nos configurará el dispositivo. Debemos de darlo los permisos para poder ejecutarlo. Sabemos cómo hacerlo. El fabricante nos dice que demos permisos a todo el mundo para hacer todo (leer, escribir y ejecutar). No es una buena práctica, como hemos dicho antes... Pero si lo dice el fabricante... Le daremos un voto de confianza. Pero en un robot en aplicación real, vigilad bien a quién le dais permisos a hacer qué. Vamos a ello con el comando
+Este comando de ROS (`roscd`) nos lleva directamente al directorio del *package* indicado. En este directorio al que hemos ido, hay un script que nos configurará el dispositivo. Debemos de darle los permisos para poder ejecutarlo. Sabemos cómo hacerlo. El fabricante nos dice que demos permisos a todo el mundo para hacer todo (leer, escribir y ejecutar). No es una buena práctica, como hemos dicho antes... Pero si lo dice el fabricante... Le daremos un voto de confianza. Pero en un robot en aplicación real, vigilad bien a quién le dais permisos a hacer qué. Vamos a ello con el comando
 
 ```bash
 sudo chmod a+rwx ./*
 ```
 
-En este comando, la `a` significa "*all*" y `./*` significa "todos los archivos en el directorio `.`", donde el directorio `.` es el actual directorio. Es decir, el punto `.` es un carácter especial como lo es la tilde `~ ` que significa "el directorio actual".
+En este comando, la `a` significa "*all*" y `./*` significa "todos los archivos en el directorio `.`", donde el directorio `.` es el actual directorio. Es decir, el punto `.` es un carácter especial, como lo es la tilde `~ `, que significa "el directorio actual".
 
 Ya podemos ejecutar el script de configuración.
 
@@ -647,7 +654,7 @@ Una vez entendido qué datos nos está dando el terminal, paramos todos los proc
 
 En un sistema ROS hay siempre un *master*. Un sistema que corre `roscore` y que gestiona todo la red ROS. En nuestro sistema, la RPi hace de *master*. Nuestra VM lo que hará es preguntarle a la RPi que *topics* hay disponibles y se suscribirá a ellos. Pero, ¿cómo sabe la VM dónde puede comunicarse con el *master*? Pues mediante la variable de entorno `ROS_MASTER_URI`. En esta variable almacenaremos la IP de nuestro *master* de tal modo que la VM sepa donde tiene que ir a buscar los *topics*.
 
-Así pues, **abrimos un terminal en la VM**. Voy a repetirlo otra vez, por si acaso, **lo abrimos en la VM**. Es decir, vamos a Ubuntu y abrimos el terminal de Ubuntu, no el de VSC (que está conectado a la RPi). En ese recién abierto terminal, podemos configurar de dos modos la variable de entorno `ROS_MASTER_URI`_
+Así pues, **abrimos un terminal en la VM**. Voy a repetirlo otra vez, por si acaso, **lo abrimos en la VM**. Es decir, vamos a Ubuntu y abrimos el terminal de Ubuntu, no el de VSC (que está conectado a la RPi). En ese recién abierto terminal, podemos configurar de dos modos la variable de entorno `ROS_MASTER_URI`
 
 - Ejecutando el comando
 
@@ -669,7 +676,7 @@ Utilizaremos el segundo método puesto que la IP de la RPi no variará. Pero si 
 
 La IP `XXX.XXX.XXX.XXX` es la misma que habéis utilizado para conectaros a la RPi mediante SSH en VSC. El `:11311` adicional es el puerto a través del cual se hace la conexión. El puerto por defecto es 11311.
 
-Una vez ejecutado el comando, o bien cerramos y abrimos el terminal para que se apliquen los cambio, o podemos ejecutar la instrucción
+Una vez ejecutado el comando, o bien cerramos y abrimos el terminal para que se apliquen los cambios, o podemos ejecutar la instrucción
 
 ```bash
 source ~/.bashrc
