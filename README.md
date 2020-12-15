@@ -28,6 +28,6 @@ La planificación está pensada para **dos sesiones en el aula** más un **proye
 
 Cada sesión está organizada en su propia carpeta dentro del repositorio. Dirígete a la carpeta correspondiente y sigue el archivo `README`que allí encontrarás (o clica directamente sobre los siguientes enlaces:
 
-- Primera sesión: `hello_gopigo3` ([enlace](hello_gopigo3/README.md)).
-- Segunda sesión: `manual_mapping` (enlace).
-- Proyecto: `project` (enlace).
+- Primera sesión: `session1` ([enlace](session1/README.md)).
+- Segunda sesión: session2 ([enlace](sessions2/README.md)).
+- Proyecto: `project` ([enlace](project/README.md)).
