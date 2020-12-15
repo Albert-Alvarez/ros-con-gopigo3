@@ -262,6 +262,9 @@ Podéis jugar con los parámetros del *launch file* para hacer que vaya más rá
 
 ¿Cómo evaluáis el desempeño del algoritmo? ¿Funciona correctamente? ¿Puede gestionar cualquier tipo de situación o obstáculo? Jugad con el código python para mirar de mejorar el algoritmo y acabar de ver cómo funciona este *package* 😉
 
+### Visualizar los datos en Rviz en la VM
+
+Sí, claro. Que te crees que lo pondré dos veces. En la sesión anterior vimos cómo ver los datos que se publican en los *topics* desde Rviz. Replica el procedimiento para ver el LaserScan en Rviz. Lo único que deberás modificar es el *Fixed Frame* del *Global Options*. Allí pon `base_scan`. Añade también un *Axes* para saber dónde está el robot en el mapa.
 
 ### Apagar lar RPi
 
