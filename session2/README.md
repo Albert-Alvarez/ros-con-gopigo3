@@ -19,7 +19,7 @@
 
 ### Preparación del *workspace*
 
-> Como en la sesión anterior, estáis compartiendo el robot con otros compañeros. En este guión se os indica y se os dan los comandos para trabajar en una carpeta llamada `workspace`. Para evitar solaparos, crearos cada no vuestra propia carpeta `workspace` (por ejemplo, `workspace1`, `workspace2`, `workspace3`. etc.) y sustituir de manera conveniente en los comandos a utilizar.
+> Como en la sesión anterior, estáis compartiendo el robot con otros compañeros. En este guión se os indica y se os dan los comandos para trabajar en una carpeta llamada `workspace`. Para evitar solaparos, crearos cada uno vuestra propia carpeta `workspace` (por ejemplo, `workspace1`, `workspace2`, `workspace3`. etc.) y sustituir de manera conveniente en los comandos a utilizar.
 
 En la sesión anterior ya vimos las operaciones básicas en ROS con el GoPiGo3, por lo que en esta sesión vamos a ver un ejemplo de *workspace* ya implementado en el que se llevará a cabo un algoritmo para evitar obstáculos. Como veremos, el algoritmo consiste en ir en línea recta hasta que con el LIDAR se detecta que se va a chocar con algún obstáculo. Cuando esto ocurre, el robot tirará marcha atrás a la vez que gira y, una vez esquivado el obstáculo, seguirá su marcha. Este *workspace* os ha de servir como guía/ejemplo/"pista" para el proyecto que haréis en ROS en simulación.
 
