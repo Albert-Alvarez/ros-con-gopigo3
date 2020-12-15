@@ -115,7 +115,7 @@ Ahora vamos a ver qué hace este nodo `obstacle_avoidance_node.py`.
 Este nodo lo encontramos en la carpeta `~/workspace/ros/session2/src/obstacle_avoidance/scripts` con el nombre `obstacle_avoidance_node.py`. Previamente a abrirlo, para que no se nos olvide, vamos a darle permisos de ejecución para que nos dejen correr el nodo una vez hagamos el pertinente `catkin_make` y `source develop/setup.sh`. Esto lo hacemos con el siguiente comando:
 
 ```bash
-sudo chmod +x ~/workspace/ros/session2/src/*
+sudo chmod -R +x ~/workspace/ros/session2/src/*
 ```
 
 > Si os fijáis, en esta sesión los comando son un pelín más largos que en la sesión anterior porque os estoy indicando los comandos utilizando rutas absolutas. De este modo, los comandos funcionaran indistintamente de la carpeta desde donde los ejecutéis.
