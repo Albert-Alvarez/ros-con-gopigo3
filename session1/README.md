@@ -36,6 +36,10 @@ En esta sesión vamos a aprender las operaciones básicas para interactuar con e
 
 ### Configuración del PC
 
+> Cuidado, estáis compartiendo el robot con otros compañeros. En este guión se os indica y se os dan los comandos para trabajar en una carpeta llamada `workspace`. Para evitar solaparos, crearos cada uno vuestra propia carpeta `workspace` (por ejemplo, `workspace1`, `workspace2`, `workspace3`, etc.) y sustituir de manera conveniente en los comandos a utilizar.
+
+> **IMPORTANTE:** (Madre mía, cuántas cosas importantes nada más empezar...😅) en la práctica original se desarrollaba el proyecto en la carpeta `/home/pi/workspace/ros/hello_gopigo3`. Para solventar confusiones con un *package* con el mismo nombre, se ha cambiado el nombre de la carpeta del proyecto a `/home/pi/workspace/ros/session1`. El guión ha sido modificado para incorporar este cambio, pero algunas imágenes pueden mostrar el *path* antiguo. Simplemente, ignorad este detalle en esas pocas imágenes.
+
 Cuando hablamos del PC, hablamos de tu ordenador de sobremesa o portátil. En él tenemos instalada una máquina virtual (VM) con Ubuntu 18.04 LTS (Bionic), a no ser que tengas directamente un PC con este Sistema Operativo (OS). En la VM, también tenemos instalado ROS Melodic; la versión *desktop-full*. Este es nuestro punto de partida. Si esto no lo tienes, ¡no se qué haces aquí leyendo que no lo estás instalando todo! 😭
 
 Partiendo de esta base, vamos a instalar [Visual Studio Code](https://code.visualstudio.com/) (VSC) para poder programar remotamente nuestra RPis de una manera mucho más sencilla. Para ello, ejecutamos el siguiente comando en el terminal:
@@ -335,9 +339,9 @@ Parece que llevemos un buen rato (y así es), pero solo hemos hecho que se mueva
 
 #### Inicializar el *workspace* y el *package*
 
-Puesto que trabajaremos con ROS, nos vamos a la carpeta `~/workspace/ros` y ahí creamos una carpeta que se llame `hello_gopigo3`. ¿Cómo hacerlo? [Así](#organización-del-espacio-de-trabajo).
+Puesto que trabajaremos con ROS, nos vamos a la carpeta `~/workspace/ros` y ahí creamos una carpeta que se llame `session1`. ¿Cómo hacerlo? [Así](#organización-del-espacio-de-trabajo).
 
-Dentro de la carpeta `hello_gopigo3`, creamos una carpeta llamada `src` y entramos en ella. Allí ejecutamos el comando
+Dentro de la carpeta `session1`, creamos una carpeta llamada `src` y entramos en ella. Allí ejecutamos el comando
 
 ```bash
 catkin_create_pkg hello_gopigo3
@@ -386,7 +390,7 @@ Guardamos el archivo e, igual que antes, le damos permisos de ejecución al usua
 ```
 /home/pi/workspace/
 └── ros
-    └── hello_gopigo3
+    └── session1
         └── src
             └── hello_gopigo3
                 ├── CMakeLists.txt
@@ -395,7 +399,7 @@ Guardamos el archivo e, igual que antes, le damos permisos de ejecución al usua
                     └── move_motors.py
 ```
 
-Finalmente, solo queda compilar el *workspace* de ROS. Nos vamos al directorio raíz del *workspace*, es decir, a `~/workspace/ros/hello_gopigo3/`. Para subir a un directorio superior en el terminal, debéis de utilizar `cd ..` (dos puntos, sí).
+Finalmente, solo queda compilar el *workspace* de ROS. Nos vamos al directorio raíz del *workspace*, es decir, a `~/workspace/ros/session1/`. Para subir a un directorio superior en el terminal, debéis de utilizar `cd ..` (dos puntos, sí).
 
 > Cuidado con confundir nuestra carpeta `workspace` con el término *workspace* en ROS, que para ROS viene a significar "proyecto".
 
@@ -437,7 +441,7 @@ ROS buscará los *packages* utilizados primeramente en nuestro *workspace* y, si
 
 #### *Package* gopigo3
 
-Nos vamos a la carpeta `src`de nuestro *workspace* `hello_gopigo3`. Allí ejecutamos el comando
+Nos vamos a la carpeta `src`de nuestro *workspace* `session1`. Allí ejecutamos el comando
 
 ```bash
 git clone https://github.com/ros-gopigo/gopigo3_node
@@ -446,7 +450,7 @@ git clone https://github.com/ros-gopigo/gopigo3_node
 El uso de Git da para un tema aparte y podréis verlo en detalle en la asignatura "[Microcontroladores para Aplicaciones y Sistemas Biomédicos (MASB)](http://grad.ub.edu/grad3/plae/AccesInformePDInfes?curs=2020&assig=366222&ens=TG1074&recurs=pladocent&n2=1&idioma=CAT)" del semestre que viene. Por el momento, os vale con saber que este comando copia un *package* de un repositorio remoto en vuestra carpeta `src`. Después de este comando, la estructura de nuestro *workspace* sería la siguiente
 
 ```
-hello_gopigo3/
+/home/pi/workspace/ros/session1/
 ├── build
 ├── devel
 └── src
@@ -513,7 +517,7 @@ git clone --single-branch --branch=kinetic-devel https://github.com/ros-teleop/t
 Ahora nuestra estructura de directorios es
 
 ```
-hello_gopigo3/
+/home/pi/workspace/ros/session1/
 ├── build
 ├── devel
 └── src
@@ -688,7 +692,7 @@ source ~/.bashrc
 Hecho esto, nos vamos al terminal en RPi (es decir, en VSC) y ejecutamos los siguientes nodos en diferentes terminales. Acuérdate de hacer un `source devel/setup.sh` en cada uno de los terminales. En el primer terminal ejecutamos
 
 ```bash
-cd ~/workspace/ros/hello_gopigo3
+cd ~/workspace/ros/session1
 source devel/setup.sh
 roslaunch ydlidar lidar.launch
 ```
@@ -696,7 +700,7 @@ roslaunch ydlidar lidar.launch
 En un segundo terminal, ejecutamos
 
 ```bash
-cd ~/workspace/ros/hello_gopigo3
+cd ~/workspace/ros/session1
 source devel/setup.sh
 roslaunch raspicam_node camerav2_1280x960_10fps.launch enable_raw:=true camera_frame_id:="laser_frame"
 ```
