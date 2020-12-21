@@ -19,29 +19,68 @@
 
 ### Preparación del *workspace*
 
-> Como en la sesión anterior, estáis compartiendo el robot con otros compañeros. En este guión se os indica y se os dan los comandos para trabajar en una carpeta llamada `workspace`. Para evitar solaparos, crearos cada uno vuestra propia carpeta `workspace` (por ejemplo, `workspace1`, `workspace2`, `workspace3`, etc.) y sustituir de manera conveniente en los comandos a utilizar.
+> Como en la sesión anterior, estáis compartiendo el robot con otros compañeros. En este guión se os indica y se os dan los comandos para trabajar en una carpeta llamada `workspace`. Para evitar solaparos, **crearos cada uno vuestra propia carpeta `workspace`** (por ejemplo, `workspace1`, `workspace2`, `workspace3`, etc.) y **sustituir de manera conveniente en los comandos a utilizar**.
 
-En la sesión anterior ya vimos las operaciones básicas en ROS con el GoPiGo3, por lo que en esta sesión vamos a ver un ejemplo de *workspace* ya implementado en el que se llevará a cabo un algoritmo para evitar obstáculos. Como veremos, el algoritmo consiste en ir en línea recta hasta que con el LIDAR se detecta que se va a chocar con algún obstáculo. Cuando esto ocurre, el robot tirará marcha atrás a la vez que gira y, una vez esquivado el obstáculo, seguirá su marcha. Este *workspace* os ha de servir como guía/ejemplo/"pista" para el proyecto que haréis en ROS en simulación.
+En la sesión anterior ya vimos las operaciones básicas en ROS con el GoPiGo3, por lo que en esta sesión vamos a ver un ejemplo de *workspace* ya implementado en el que se llevará a cabo un **algoritmo para evitar obstáculos**. Como veremos, el algoritmo consiste en **ir en línea recta** hasta que con el **LIDAR se detecta** que se va a chocar con algún **obstáculo**. Cuando esto ocurre, el **robot tirará marcha atrás a la vez que gira** y, una vez esquivado el obstáculo, seguirá su marcha. Este *workspace* os ha de servir como guía/ejemplo/"pista" para el proyecto que haréis en ROS en simulación.
 
-Bien. Pues empecemos. Primeramente, nos conectamos a la RPi. Ya sabemos [cómo](../session1/README.md#Encendiendo-máquinas), pero a modo resumen, abrimos VSC, le damos al icono de conexión de la esquina inferior-izquierda y nos conectamos a nuestra RPi.
+Otra cosa que también vimos es a mi batallando con el WiFi.
 
-Seguidamente, ejecutaremos estos comandos.
+<p align="center">
+	<img width=250 src="../assets/imgs/wifi-coverage.gif">
+</p>
 
-```bash
-mkdir -p ~/workspace/ros/session2
-cd ~/workspace/ros/session2
-git clone --single-branch --branch=develop https://github.com/Albert-Alvarez/ros-con-gopigo3.git ~/ros-con-gopigo3
-mv ~/ros-con-gopigo3/session2/src ~/workspace/ros/session2
-rm -rf ~/ros-con-gopigo3
+Como vimos, en sistemas distribuidos, la calidad de la conexión es vital y esa calidad no se daba. Por ello, cambiaremos la estructura de nuestra red. En la anterior sesión conectábamos nuestras RPi y nuestros ordenadores a un router. El router se encargaba de gestionar la transmisión de los paquetes de datos entre los dispositivos. En la nueva estructura de red que utilizaremos en esta sesión, cada **RPi actuará como *host access point*** y **generará una red WiFi.** Nos conectaremos a la WiFi de nuestro robot y nos intercambiaremos paquetes de datos directamente con él. Eliminando el intermediario que tantos quebraderos de cabeza nos dio (el router), lograremos mejorar el desempeño de la comunicación inalámbrica.
+
+Ventajas:
+
+- Nos ahorramos el router, que puede ocasionar problemas.
+- La IP del robot ya la sabemos de antemano. No hace falta que le preguntemos al profesor. La IP de la RPi será `192.168.4.1`.
+
+Desventajas:
+
+- No tendremos internet. Puesto que la RPi ocupa su controlador de red a generar una red WiFi, no puede conectarse a otra WiFi. Y como nuestro ordenador está directamente conectado a la RPi, no puede conectarse a otra WiFi y no tendrá internet. Pero tranquil@s. No lo necesitamos.
+
+El uso de esta nueva estructura de red implica unas ligeras diferencias a la hora de entrar a la RPi mediante SSH. Básicamente, no podemos utilizar VSC como hasta ahora. Pero utilizaremos otro método que, me atrevo a decir, puede que os guste más o os resulte más cómodo. Lo veremos a continuación.
+
+Bien. Pues empecemos. Primeramente, **nos conectamos a la red WiFi generada por nuestro robot** (aseguraos que está encendido... 😒). El **SSID de la red será "RoboticsUB_XXXX"** donde los cuatro últimos dígitos corresponden a los últimos cuatro dígitos de la dirección MAC de la RPi (un identificador único). **En el robot encontraréis escrito esos cuatro dígitos.** La **contraseña** es la de siempre: "CorrePiCorre".
+
+Seguidamente, una vez conectados, **modificaremos la configuración de red de nuestra VM**. Vamos a VirtualBox, a los parámetros de Red de nuestra VM y allí, en el desplegable, seleccionamos **"Adaptador puente"** (muy seguramente, antes teníamos configurado "NAT"). Clicamos `Aceptar` y, si teníamos encendida/arrancada la VM, la **reinciamos**.
+
+Ahora nos conectaremos a la RPi (sin VSC). Lo haremos fácil. Abrimos en nuestra VM la aplicación **Archivos** (básicamente, el explorador de archivos de Ubuntu) y clicamos sobre "Otras ubicaciones" en la barra lateral izquierda. Ahora, en la barra inferior de la ventana, donde se indica **"Conectar al servidor"**, escribimos:
+
+```
+ssh://pi@192.168.4.1/
 ```
 
-Con estos comandos hemos creado nuestra carpeta de *workspace*, hemos entrado, hemos clonado un repositorio del que cogeremos la carpeta `src` y hemos copiado en nuestro *workspace* y, finalmente, hemos eliminado ese repositorio (ya no lo necesitaremos más).
+<p align="center">
+	<a href="../assets/imgs/conexion-remota-archivos.png">
+		<img src="../assets/imgs/conexion-remota-archivos.png">
+  </a>
+</p>
+
+Pulsamos en `Conectar` y *et voilà*. Se nos abrirá una **carpeta con acceso a todos los archivos de la RPi**. También se nos creará un **acceso en el Escritorio**. Navegaremos por esa carpeta normalmente tal y como lo haríamos por cualquier otra.
+
+Tenemos acceso a los archivos. ¿Y el **terminal**? *Easy*. Haciendo **clic derecho al acceso a la RPi que se nos ha creado en el Escritorio** nos da la opción de abrir un **terminal en el sistema remoto**. Nos pedirá la contraseña y ya tenemos nuestro terminal dentro de la RPi.
+
+Bien. Teniendo ya acceso a los archivos de la RPi y a un terminal dentro de ella, podemos empezar 😉
+
+Dentro de la RPi, ejecutaremos estos comandos.
+
+```bash
+mkdir -p ~/workspace/ros/session2/src
+cd ~/workspace/ros/session2/src
+cp -R ~/ros_packages/gopigo3_node .
+cp -R ~/ros_packages/obstacle_avoidance .
+cp -R ~/ros_packages/ydlidar .
+```
+
+Con estos comandos hemos creado nuestra carpeta de *workspace* y hemos entrado. Luego, hemos añadido los *packages* que necesitaremos. Antes hacíamos `git clone` para coger los repositorios desde internet, pero "oh, sorpresa" no tenemos internet. Entonces lo que hemos hecho es dejaros preparados los *packages* que necesitaremos en la carpeta `~/ros_packages` y de allí nos los copiamos a nuestro *workspace*.
 
 Con todo esto, si chafardeáis vuestro *workspace*, veréis que ya tenemos una serie de *packages*. Básicamente, son todos los que utilizaremos en esta sesión: gopigo3_node, ydlidar_node y obstacle_avoidance. Los dos primeros ya los conocemos y el último es un *package* desarrollado expresamente para esta sesión. Deberíamos lanzar los tres en terminales distintos y, además, utilizar un cuarto terminal para correr `roscore`. Un auténtico palo... Creo que va siendo hora de ver la comodidad de los *launch files*.
 
 ### Los *launch files*
 
-En la carpeta `~/workspace/ros/session2/src/obstacle_avoidance/launch` hay un archivo llamado `obstacle_avoidance_node.launch`. Ábrelo desde VSC. La pinta que tiene es la siguiente.
+En la carpeta `~/workspace/ros/session2/src/obstacle_avoidance/launch` hay un archivo llamado `obstacle_avoidance_node.launch`. Ábrelo. La pinta que tiene es la siguiente.
 
 ```xml
 <launch>
@@ -118,9 +157,9 @@ Este nodo lo encontramos en la carpeta `~/workspace/ros/session2/src/obstacle_av
 sudo chmod -R +x ~/workspace/ros/session2/src/*
 ```
 
-> Si os fijáis, en esta sesión los comando son un pelín más largos que en la sesión anterior porque os estoy indicando los comandos utilizando rutas absolutas. De este modo, los comandos funcionaran indistintamente de la carpeta desde donde los ejecutéis.
+> Si os fijáis, en esta sesión los comandos son un pelín más largos que en la sesión anterior porque os estoy indicando los comandos utilizando rutas absolutas. De este modo, los comandos funcionaran indistintamente de la carpeta desde donde los ejecutéis.
 
-Hecho esto, abrimos el archivo en VSC. Tendrá una pinta como la siguiente (como la otra vez, os comento en el propio código el funcionamiento):
+Hecho esto, abrimos el archivo. Tendrá una pinta como la siguiente (como la otra vez, os comento en el propio código el funcionamiento):
 
 ```python
 #!/usr/bin/env python
@@ -264,12 +303,69 @@ Podéis jugar con los parámetros del *launch file* para hacer que vaya más rá
 
 ### Visualizar los datos en Rviz en la VM
 
-Sí, claro. Que te crees que lo pondré dos veces. En la sesión anterior vimos cómo ver los datos que se publican en los *topics* desde Rviz. Replica el procedimiento para ver el LaserScan en Rviz. Lo único que deberás modificar es el *Fixed Frame* del *Global Options*. Allí pon `base_scan`. Añade también un *Axes* para saber dónde está el robot en el mapa.
+Rescatemos este procedimiento de la sesión 1 que no nos dio tiempo a acabar (es lo que nos faltaba por hacer).
+
+En un sistema ROS hay siempre un *master*. Un sistema que corre `roscore` y que gestiona todo la red ROS. En nuestro sistema, la RPi hace de *master*. Nuestra VM lo que hará es preguntarle a la RPi que *topics* hay disponibles y se suscribirá a ellos. Pero, ¿cómo sabe la VM dónde puede comunicarse con el *master*? Pues mediante la variable de entorno `ROS_MASTER_URI`. En esta variable almacenaremos la IP de nuestro *master* de tal modo que la VM sepa donde tiene que ir a buscar los *topics*.
+
+Así pues, **abrimos un terminal en la VM**. Voy a repetirlo otra vez, por si acaso, **lo abrimos en la VM**. Es decir, vamos a Ubuntu y abrimos el terminal de Ubuntu, no el que está conectado a la RPi. En ese recién abierto terminal, podemos configurar de dos modos la variable de entorno `ROS_MASTER_URI`
+
+- Ejecutando el comando
+
+  ```bash
+  export ROS_MASTER_URI=http://192.168.4.1:11311
+  ```
+
+  Utilizando esta vía, deberemos de ejecutar este comando cada vez abramos un nuevo terminal.
+
+- Ejecutando el comando
+
+  ```bash
+  echo 'export ROS_MASTER_URI=http://192.168.4.1:11311' >> ~/.bashrc 
+  ```
+
+  Este comando nos añadirá la exportación en nuestro archivo `.bashrc` y se ejecutará cada vez que abramos un terminal de manera automática.
+
+Utilizaremos el segundo método puesto que la IP de la RPi no variará. Pero si lo hiciese, deberíamos de ir a nuestro archivo `.bashrc` en nuestro `home` y modificar allí la IP.
+
+La IP `192.168.4.1` es la misma que habéis utilizado para conectaros a la RPi mediante SSH en VSC. El `:11311` adicional es el puerto a través del cual se hace la conexión. El puerto por defecto es 11311.
+
+Una vez ejecutado el comando, o bien cerramos y abrimos el terminal para que se apliquen los cambios, o podemos ejecutar la instrucción
+
+```bash
+source ~/.bashrc
+```
+
+Hecho esto, debemos de configurar una segunda variable. Esta es `ROS_IP`.  Esta variable almacenará la IP de la VM y será la que entreguemos al master (la RPi) para que sepa dónde enviar los paquetes. La IP de nuestra VM la podemos obtener mediante el comando
+
+```bash
+hostname -I
+```
+
+Utilizamos el mismo procedimiento que con `ROS_MASTER_URI` para guardar la variable `ROS_IP`. 
+
+Ahora, ejecutamos el comando `Rviz` para abrir Rviz. Si al ejecutar el comando os dice que no encuentra el *master*, es porque no habéis indicado correctamente la IP en la variable `ROS_MASTER_URI` o porque no habéis iniciado los nodos ROS en la RPi. Si todo sigue su curso correctamente, se os abrirá Rviz.
+
+Para ver los datos del LIDAR, pulsamos sobre el botón `Add` y nos vamos a la pestaña `By topic`. Allí hacemos doble clic sobre `LaserScan` dentro de `/scan`. Luego configuraremos el `Fixed Frame`en las `Global Options` en el navegador en la zona izquierda de la aplicación. Allí escribiremos `base_scan`. Ahora deberíamos de poder ver, como puntos rojos, los puntos reconocidos en el espacio por el LIDAR.
+
+Para saber dónde se encuentra el robot, añadiremos un sistema de referencia o *axes*. Nos vamos al botón `Add` y esta vez, en la pestaña `By display type`, hacemos doble clic sobre `Axes`. Se nos añadirá un sistema de coordenadas gigante justo done está el robot. Podemos hacerlo más pequeño desde el panel de navegación de la izquierda, fijando un `Lenght`de 0.1 y un `Radius`de 0.01 en las propiedades del `Axes`.
+
+Esta sería la pinta de nuestro Rviz mostrando todos los datos recogidos por el robot (falta la cámara que, si nos da tiempo, os enseño en la clase mismo cómo añadirla 😉).
+
+<p align="center">
+    <a href="../assets/imgs/rviz.png">
+      <img src="../assets/imgs/rviz.png">
+    </a>
+</p>
+
+
+Hecho esto, ya hemos acabado. Simplemente, cerramos Rviz y paramos todos los nodos en la RPi.
 
 ### Apagar lar RPi
 
-Ya sabes. Una vez hayáis acabado, apagad bien la RPi o ¡morirá entre terribles sufrimientos!
+Igual de importante que el resto de los pasos anteriores es apagar la RPi de manera correcta. Para ello, en un terminal conectado a la RPi ejecutamos el comando
 
 ```bash
 sudo shutdown now
 ```
+
+Con esto apagamos la RPi. Cuando el LED amarillo de la RPi deje de parpadear, podemos quitar todas las alimentaciones sin miedo.
